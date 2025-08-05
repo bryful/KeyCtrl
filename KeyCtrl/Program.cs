@@ -25,16 +25,18 @@ namespace KeyCtrl
 			{
 				Icon = Properties.Resources.Icons,
 				Visible = true,
-				Text = "TaskTray-Only App"
+				Text = "Fs Keyboard"
 			};
 
 			var contextMenu = new ContextMenuStrip();
-			contextMenu.Items.Add("メッセージ表示", null, (s, e) => MessageBox.Show("こんにちは！"));
+			contextMenu.Items.Add(
+				"メッセージ表示", null, (s, e) => { KeyCtrl.GetProfileData(); }
+				);
 			contextMenu.Items.Add("Quit", null, (s, e) => Application.Exit());
 			icon.ContextMenuStrip = contextMenu;
 			Application.ApplicationExit += (s, e) =>
 			{
-				
+				KeyCtrl.end();
 			};
 			KeyCtrl.begin();
 
